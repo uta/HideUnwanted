@@ -1,0 +1,67 @@
+== About ==
+
+HideUnwanted is an extension of the MediaWiki.
+You can hide unwanted headers, tabs, and footers.
+
+
+For more information:
+  * https://github.com/uta/HideUnwanted
+
+
+
+== Download ==
+
+You can get the code directly from Git.
+
+$ git clone https://github.com/uta/HideUnwanted.git
+
+
+
+== Installation ==
+
+Once you have downloaded the code, place the ''HideUnwanted'' directory
+to extensions directory of your MediaWiki.
+
+Then add the following code to your LocalSettings.php:
+
+require_once( "$IP/extensions/HideUnwanted/HideUnwanted.php" );
+
+
+
+== Configuration ==
+
+You can assign unwanted headers, tabs, and footers
+with array form at LocalSettings.php as follows:
+
+  * $wgHideUnwantedHeaders  = array('mytalk');
+  * $wgHideUnwantedTabs     = array('talk', 'viewsource');
+  * $wgHideUnwantedFooters  = array('about', 'copyright', 'disclaimer', 'numberofwatchingusers', 'privacy', 'viewcount');
+
+=== Assignable Values ===
+
+  * Headers
+    * login
+    * mycontris
+    * mytalk
+    * preferences
+    * userpage
+    * watchlist
+
+  * Tabs
+    * delete
+    * edit
+    * history
+    * move
+    * protect
+    * talk
+    * viewsource
+    * watch
+
+  * Footers
+    * about
+    * copyright
+    * disclaimer
+    * lastmod
+    * numberofwatchingusers
+    * privacy
+    * viewcount
