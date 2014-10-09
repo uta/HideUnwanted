@@ -14,11 +14,11 @@ $wgExtensionCredits['skin'][] = array(
   'license-name'    => 'MIT-License',
 );
 
-$event                          = 'SkinTemplateOutputPageBeforeExec';
-$wgHooks[$event][]              = "$ext::hide";
-$wgAutoloadClasses[$ext]        = "$dir/$ext.class.php";
-$wgExtensionMessagesFiles[$ext] = "$dir/$ext.i18n.php";
-$wgMessagesDirs[$ext]           = "$dir/i18n";
-$wgHideUnwantedFooters          = array();
-$wgHideUnwantedHeaders          = array();
-$wgHideUnwantedTabs             = array();
+$wgAutoloadClasses["${ext}Hooks"]               = "$dir/classes/${ext}Hooks.php";
+$wgExtensionMessagesFiles[$ext]                 = "$dir/i18n/_backward_compatibility.php";
+$wgHooks['SkinTemplateOutputPageBeforeExec'][]  = "${ext}Hooks::hide";
+$wgMessagesDirs[$ext]                           = "$dir/i18n";
+
+$wgHideUnwantedFooters                          = array();
+$wgHideUnwantedHeaders                          = array();
+$wgHideUnwantedTabs                             = array();

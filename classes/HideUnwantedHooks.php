@@ -1,15 +1,16 @@
 <?php
-class HideUnwanted {
+if(!defined('MEDIAWIKI')) die;
+class HideUnwantedHooks {
   public static function hide(&$skin, &$template) {
-    global $wgHideUnwantedFooters, $wgHideUnwantedHeaders, $wgHideUnwantedTabs;
-    self::hideFooters($wgHideUnwantedFooters, $template);
-    self::hideHeaders($wgHideUnwantedHeaders, $template);
-    self::hideTabs($wgHideUnwantedTabs, $template);
+    self::hideFooters($template);
+    self::hideHeaders($template);
+    self::hideTabs($template);
   }
 
-  private static function hideFooters($footers, &$template) {
-    if(is_array($footers)) {
-      foreach($footers as $footer) {
+  private static function hideFooters(&$template) {
+    global $wgHideUnwantedFooters;
+    if(is_array($wgHideUnwantedFooters)) {
+      foreach($wgHideUnwantedFooters as $footer) {
         switch($footer) {
           case 'about':
             self::remove($template->data['footerlinks']['places'], 'about');
@@ -38,9 +39,10 @@ class HideUnwanted {
     return true;
   }
 
-  private static function hideHeaders($headers, &$template) {
-    if(is_array($headers)) {
-      foreach($headers as $header) {
+  private static function hideHeaders(&$template) {
+    global $wgHideUnwantedHeaders;
+    if(is_array($wgHideUnwantedHeaders)) {
+      foreach($wgHideUnwantedHeaders as $header) {
         switch($header) {
           case 'login':
             unset($template->data['personal_urls']['login']);
@@ -67,9 +69,10 @@ class HideUnwanted {
     return true;
   }
 
-  private static function hideTabs($tabs, &$template) {
-    if(is_array($tabs)) {
-      foreach($tabs as $tab) {
+  private static function hideTabs(&$template) {
+    global $wgHideUnwantedTabs;
+    if(is_array($wgHideUnwantedTabs)) {
+      foreach($wgHideUnwantedTabs as $tab) {
         switch($tab) {
           case 'delete':
             unset($template->data['content_actions']['delete']);
@@ -105,6 +108,6 @@ class HideUnwanted {
 
   private static function remove(&$arr, $str) {
     $i = array_search($str, $arr);
-    if($arr[$i]==$str) { array_splice($arr, $i, 1); }
+    if($arr[$i]==$str) {array_splice($arr, $i, 1);}
   }
 }
