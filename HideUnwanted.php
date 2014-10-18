@@ -4,7 +4,7 @@ if(!defined('MEDIAWIKI')) die;
 $dir = __DIR__;
 $ext = 'HideUnwanted';
 
-$wgExtensionCredits['skin'][] = array(
+$wgExtensionCredits['other'][] = array(
   'path'            => __FILE__,
   'name'            => $ext,
   'version'         => '0.1',
