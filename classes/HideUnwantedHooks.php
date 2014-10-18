@@ -76,29 +76,39 @@ class HideUnwantedHooks {
         switch($tab) {
           case 'delete':
             unset($template->data['content_actions']['delete']);
+            unset($template->data['content_navigation']['actions']['delete']);
             break;
           case 'edit':
             unset($template->data['content_actions']['edit']);
+            unset($template->data['content_navigation']['actions']['edit']);
             break;
           case 'history':
             unset($template->data['content_actions']['history']);
+            unset($template->data['content_navigation']['views']['history']);
             break;
           case 'move':
             unset($template->data['content_actions']['move']);
+            unset($template->data['content_navigation']['actions']['move']);
             break;
           case 'protect':
             unset($template->data['content_actions']['protect']);
             unset($template->data['content_actions']['unprotect']);
+            unset($template->data['content_navigation']['actions']['protect']);
+            unset($template->data['content_navigation']['actions']['unprotect']);
             break;
           case 'talk':
             unset($template->data['content_actions']['talk']);
+            unset($template->data['content_navigation']['namespaces']['talk']);
             break;
           case 'viewsource':
             unset($template->data['content_actions']['viewsource']);
+            unset($template->data['content_navigation']['views']['viewsource']);
             break;
           case 'watch':
             unset($template->data['content_actions']['watch']);
             unset($template->data['content_actions']['unwatch']);
+            unset($template->data['content_navigation']['actions']['watch']);
+            unset($template->data['content_navigation']['actions']['unwatch']);
             break;
         }
       }
