@@ -13,30 +13,19 @@ class HideUnwantedHooks {
       foreach($wgHideUnwantedFooters as $footer) {
         switch($footer) {
           case 'about':
-            self::remove($template->data['footerlinks']['places'], 'about');
+          case 'disclaimer':
+          case 'privacy':
+            self::remove($template->data['footerlinks']['places'], $footer);
             break;
           case 'copyright':
-            self::remove($template->data['footerlinks']['info'],   'copyright');
-            break;
-          case 'disclaimer':
-            self::remove($template->data['footerlinks']['places'], 'disclaimer');
-            break;
           case 'lastmod':
-            self::remove($template->data['footerlinks']['info'],   'lastmod');
-            break;
           case 'numberofwatchingusers':
-            self::remove($template->data['footerlinks']['info'],   'numberofwatchingusers');
-            break;
-          case 'privacy':
-            self::remove($template->data['footerlinks']['places'], 'privacy');
-            break;
           case 'viewcount':
-            self::remove($template->data['footerlinks']['info'],   'viewcount');
+            self::remove($template->data['footerlinks']['info'], $footer);
             break;
         }
       }
     }
-    return true;
   }
 
   private static function hideHeaders(&$template) {
@@ -45,28 +34,19 @@ class HideUnwantedHooks {
       foreach($wgHideUnwantedHeaders as $header) {
         switch($header) {
           case 'login':
-            unset($template->data['personal_urls']['login']);
+            unset($template->data['personal_urls'][$header]);
             unset($template->data['personal_urls']['logout']);
             break;
           case 'mycontris':
-            unset($template->data['personal_urls']['mycontris']);
-            break;
           case 'mytalk':
-            unset($template->data['personal_urls']['mytalk']);
-            break;
           case 'preferences':
-            unset($template->data['personal_urls']['preferences']);
-            break;
           case 'userpage':
-            unset($template->data['personal_urls']['userpage']);
-            break;
           case 'watchlist':
-            unset($template->data['personal_urls']['watchlist']);
+            unset($template->data['personal_urls'][$header]);
             break;
         }
       }
     }
-    return true;
   }
 
   private static function hideTabs(&$template) {
@@ -75,45 +55,30 @@ class HideUnwantedHooks {
       foreach($wgHideUnwantedTabs as $tab) {
         switch($tab) {
           case 'delete':
-            unset($template->data['content_actions']['delete']);
-            unset($template->data['content_navigation']['actions']['delete']);
-            break;
           case 'edit':
-            unset($template->data['content_actions']['edit']);
-            unset($template->data['content_navigation']['actions']['edit']);
+          case 'move':
+            unset($template->data['content_actions'][$tab]);
+            unset($template->data['content_navigation']['actions'][$tab]);
             break;
           case 'history':
-            unset($template->data['content_actions']['history']);
-            unset($template->data['content_navigation']['views']['history']);
-            break;
-          case 'move':
-            unset($template->data['content_actions']['move']);
-            unset($template->data['content_navigation']['actions']['move']);
+          case 'viewsource':
+            unset($template->data['content_actions'][$tab]);
+            unset($template->data['content_navigation']['views'][$tab]);
             break;
           case 'protect':
-            unset($template->data['content_actions']['protect']);
-            unset($template->data['content_actions']['unprotect']);
-            unset($template->data['content_navigation']['actions']['protect']);
-            unset($template->data['content_navigation']['actions']['unprotect']);
+          case 'watch':
+            unset($template->data['content_actions'][$tab]);
+            unset($template->data['content_actions']["un$tab"]);
+            unset($template->data['content_navigation']['actions'][$tab]);
+            unset($template->data['content_navigation']['actions']["un$tab"]);
             break;
           case 'talk':
-            unset($template->data['content_actions']['talk']);
-            unset($template->data['content_navigation']['namespaces']['talk']);
-            break;
-          case 'viewsource':
-            unset($template->data['content_actions']['viewsource']);
-            unset($template->data['content_navigation']['views']['viewsource']);
-            break;
-          case 'watch':
-            unset($template->data['content_actions']['watch']);
-            unset($template->data['content_actions']['unwatch']);
-            unset($template->data['content_navigation']['actions']['watch']);
-            unset($template->data['content_navigation']['actions']['unwatch']);
+            unset($template->data['content_actions'][$tab]);
+            unset($template->data['content_navigation']['namespaces'][$tab]);
             break;
         }
       }
     }
-    return true;
   }
 
   private static function remove(&$arr, $str) {
