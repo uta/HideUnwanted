@@ -5,6 +5,7 @@ class HideUnwantedHooks {
     self::hideFooters($template);
     self::hideHeaders($template);
     self::hideTabs($template);
+    self::hideToolboxes($template);
   }
 
   private static function hideFooters(&$template) {
@@ -75,6 +76,30 @@ class HideUnwantedHooks {
           case 'talk':
             unset($template->data['content_actions'][$tab]);
             unset($template->data['content_navigation']['namespaces'][$tab]);
+            break;
+        }
+      }
+    }
+  }
+
+  private static function hideToolboxes(&$template) {
+    global $wgHideUnwantedToolboxes;
+    if(is_array($wgHideUnwantedToolboxes)) {
+      foreach($wgHideUnwantedToolboxes as $toolbox) {
+        switch($toolbox) {
+          case 'blockip':
+          case 'contributions':
+          case 'emailuser':
+          case 'info':
+          case 'log':
+          case 'permalink':
+          case 'print':
+          case 'recentchangeslinked':
+          case 'specialpages':
+          case 'upload':
+          case 'userrights':
+          case 'whatlinkshere':
+            unset($template->data['nav_urls'][$toolbox]);
             break;
         }
       }

@@ -2,5 +2,5 @@
   "@metadata": {
     "authors": ["uta"]
   },
-  "hide-unwanted-desc": "不要なヘッダー、タブ、フッターを非表示にする"
+  "hide-unwanted-desc": "不要なヘッダー、タブ、ツールボックス、フッターを非表示にする"
 }

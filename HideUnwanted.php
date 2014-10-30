@@ -22,3 +22,4 @@ $wgMessagesDirs[$ext]                           = "$dir/i18n";
 $wgHideUnwantedFooters                          = array();
 $wgHideUnwantedHeaders                          = array();
 $wgHideUnwantedTabs                             = array();
+$wgHideUnwantedToolboxes                        = array();

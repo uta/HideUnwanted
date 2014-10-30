@@ -1,7 +1,7 @@
 == About ==
 
 HideUnwanted is an extension of the MediaWiki.
-You can hide unwanted headers, tabs, and footers.
+You can hide unwanted headers, tabs, toolboxes, and footers.
 
 
 For more information:
@@ -39,9 +39,10 @@ require_once( "$IP/extensions/HideUnwanted/HideUnwanted.php" );
 You can assign unwanted headers, tabs, and footers
 with array form at LocalSettings.php as follows:
 
-  * $wgHideUnwantedHeaders  = array('mytalk');
-  * $wgHideUnwantedTabs     = array('talk', 'viewsource');
-  * $wgHideUnwantedFooters  = array('about', 'copyright', 'disclaimer', 'numberofwatchingusers', 'privacy', 'viewcount');
+  * $wgHideUnwantedHeaders    = array('mytalk');
+  * $wgHideUnwantedTabs       = array('talk', 'viewsource');
+  * $wgHideUnwantedToolboxes  = array('print');
+  * $wgHideUnwantedFooters    = array('about', 'copyright', 'disclaimer', 'numberofwatchingusers', 'privacy', 'viewcount');
 
 === Assignable Values ===
 
@@ -62,6 +63,20 @@ with array form at LocalSettings.php as follows:
     * talk
     * viewsource
     * watch
+
+  * Toolboxes
+    * blockip
+    * contributions
+    * emailuser
+    * info
+    * log
+    * permalink
+    * print
+    * recentchangeslinked
+    * specialpages
+    * upload
+    * userrights
+    * whatlinkshere
 
   * Footers
     * about
