@@ -15,7 +15,6 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgAutoloadClasses["${ext}Hooks"]               = "$dir/classes/${ext}Hooks.php";
-$wgExtensionMessagesFiles[$ext]                 = "$dir/i18n/_backward_compatibility.php";
 $wgHooks['SkinTemplateOutputPageBeforeExec'][]  = "${ext}Hooks::hide";
 $wgMessagesDirs[$ext]                           = "$dir/i18n";
 

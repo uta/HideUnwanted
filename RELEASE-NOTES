@@ -1,6 +1,7 @@
-=== Version 0.x (2014/xx/xx) ===
+=== Version 0.x (2015/xx/xx) ===
 * Fixed issue #2
 * Refactoring
+* Backward compatibility of i18n is removed because the official support of that version was discontinued
 
 === Version 0.1.1 (2014/10/28) ===
 * Fixed issue #1
